@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Task2 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter the number of subjects: ");
+        int n = s.nextInt();
+        double[] marks = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter marks for subject " + (i + 1) + " (out of 100): ");
+            marks[i] = s.nextDouble();
+        }
+
+        double total = 0;
+        for (double mark : marks) {
+            total += mark;
+        }
+
+        double avg = total / n;
+
+        char grade;
+        if (avg >= 90) {
+            grade = 'A';
+        } else if (avg >= 80) {
+            grade = 'B';
+        } else if (avg >= 70) {
+            grade = 'C';
+        } else if (avg >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+
+        System.out.println("\n--- Result ---");
+        System.out.println("Total Marks: " + total + " / " + (n * 100));
+        System.out.println("avg Percentage: " + String.format("%.2f", avg) + "%");
+        System.out.println("Grade: " + grade);
+
+        s.close();
+    }
+}
