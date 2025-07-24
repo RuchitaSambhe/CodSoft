@@ -1,0 +1,38 @@
+import java.util.Scanner; 
+
+public class SimpleCurrencyConverter {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Available currencies: USD, EUR, INR");
+        System.out.print("Enter base currency (e.g., USD): ");
+        String base = s.next().toUpperCase();
+
+        System.out.print("Enter target currency (e.g., INR): ");
+        String target = s.next().toUpperCase();
+
+        System.out.print("Enter amount to convert: ");
+        double amount = s.nextDouble();
+
+        double rate = get(base, target);
+
+        if (rate == -1) {
+            System.out.println("Conversion not available for given currencies.");
+        } else {
+            double result = amount * rate;
+            System.out.printf("%.2f %s = %.2f %s\n", amount, base, result, target);
+        }
+
+        s.close();
+    }
+    public static double get(String base, String target) {
+        if (base.equals("USD") && target.equals("INR")) return 83.0;
+        if (base.equals("INR") && target.equals("USD")) return 0.012;
+        if (base.equals("EUR") && target.equals("INR")) return 91.0;
+        if (base.equals("INR") && target.equals("EUR")) return 0.011;
+        if (base.equals("USD") && target.equals("EUR")) return 0.92;
+        if (base.equals("EUR") && target.equals("USD")) return 1.09;
+
+        return -1; 
+    }
+}
+
